@@ -12,31 +12,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mybasicapplication.ui.theme.MyBasicApplicationTheme
-import android.content.Intent
-import android.widget.Button
 
-class MainActivity : ComponentActivity() {
+class SecondActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val explicitButton = findViewById<Button>(R.id.explicit_button)
-        val implicitButton = findViewById<Button>(R.id.implicit_button)
-
-        explicitButton.setOnClickListener {
-            val explicitIntent = Intent(this, SecondActivity::class.java)
-            startActivity(explicitIntent)
-        }
-
-        implicitButton.setOnClickListener {
-            val implicitIntent = Intent("com.example.mybasicapplication.START_SECOND_ACTIVITY")
-            startActivity(implicitIntent)
+        enableEdgeToEdge()
+        setContent {
+            MyBasicApplicationTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting2(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier
@@ -45,9 +40,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview2() {
     MyBasicApplicationTheme {
-        Greeting("Jeffrey Anderson, 1420817")
+        Greeting2("Android")
     }
 }
-

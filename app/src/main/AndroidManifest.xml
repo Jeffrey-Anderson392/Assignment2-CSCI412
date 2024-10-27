@@ -13,6 +13,18 @@
         android:theme="@style/Theme.MyBasicApplication"
         tools:targetApi="31">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            android:label="@string/title_activity_second"
+            android:theme="@style/Theme.MyBasicApplication"> <!-- Intent filter to handle implicit intents -->
+            <intent-filter>
+                <action android:name="com.yourapp.START_SECOND_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Main Activity -->
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
